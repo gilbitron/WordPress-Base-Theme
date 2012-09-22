@@ -2,9 +2,10 @@
 Theme Name: WordPress Base Theme
 Theme URI: http://dev7studios.com
 Description: The totally nude Wordpress theme! (based on http://viewportindustries.com/products/starkers)
-Version: 1.0
-Author: Gilbert Pellegrom (Elliot Jay Stocks & Keir Whitaker)
+Version: 1.1
+Author: Gilbert Pellegrom
 Author URI: http://gilbert.pellegrom.me
 */
 
 @import "css/reset.css";
+@import "css/wordpress.css";

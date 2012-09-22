@@ -5,11 +5,8 @@ add_theme_support('post-thumbnails');
 
 function get_page_id_from_path( $path ) {
 	$page = get_page_by_path( $path );
-	if( $page ) {
-		return $page->ID;
-	} else {
-		return null;
-	};
+	if( $page ) return $page->ID;
+	return null;
 }
 
 function get_category_id( $cat_name ){
@@ -22,18 +19,23 @@ function add_slug_to_body_class( $classes ) {
    
 	if( is_home() ) {			
 		$key = array_search( 'blog', $classes );
-		if($key > -1) {
-			unset( $classes[$key] );
-		};
+		if($key > -1) unset( $classes[$key] );
 	} elseif( is_page() ) {
 		$classes[] = sanitize_html_class( $post->post_name );
-	} elseif(is_singular()) {
+	} elseif( is_singular() ) {
 		$classes[] = sanitize_html_class( $post->post_name );
 	};
 
 	return $classes;
 }
 add_filter( 'body_class', 'add_slug_to_body_class' );
+
+function enqueue_comments_reply() {
+	if( get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'comment_form_before', 'enqueue_comments_reply' );
 
 function script_enqueuer() {
 	//wp_register_script( 'site', get_template_directory_uri().'/js/site.js', array( 'jquery' ) );
@@ -43,3 +45,4 @@ function script_enqueuer() {
     wp_enqueue_style( 'screen' );
 }	
 add_action( 'wp_enqueue_scripts', 'script_enqueuer' );
+

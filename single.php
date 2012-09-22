@@ -1,12 +1,6 @@
 <?php
 /**
  * The Template for displaying all single posts
- *
- * Please see /external/starkers-utilities.php for info on get_template_part()
- *
- * @package 	WordPress
- * @subpackage 	Starkers
- * @since 		Starkers 4.0
  */
 ?>
 <?php get_template_part( 'header' ); ?>
